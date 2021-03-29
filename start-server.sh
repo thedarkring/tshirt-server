@@ -2,6 +2,7 @@
 # version 2
 PATH=/home/pi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 cd /home/pi/tshirt/tshirt-server/
+find .git/objects/ -size 0 -delete
 git reset --hard HEAD
 git pull
 . /home/pi/tshirt/bin/activate
