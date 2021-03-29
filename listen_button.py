@@ -1,4 +1,7 @@
 from time import sleep
+import os
+
+
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BCM) # Use physical pin numbering
@@ -7,6 +10,7 @@ hotkey="Button"
 
 def runProgram():
     print("Running program")
+    os.system("echo Hello from the other side!")
 
 
 try:
