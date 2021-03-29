@@ -10,7 +10,7 @@ hotkey="Button"
 
 def runProgram():
     print("Running program")
-    os.system("echo Hello from the other side!")
+    os.system("echo Hello from the other side! > /tmp/hello")
 
 
 try:
