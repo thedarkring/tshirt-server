@@ -6,23 +6,17 @@ import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BCM) # Use physical pin numbering
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-hotkey="Button"
- 
-pinNumbers=[2,3,4,27,22]
-for pinNumber in pinNumbers:
-    GPIO.setup(pinNumber, GPIO.OUT)
-    
+
+import requests
+url='http://127.0.0.1:8000'
+
 def runProgram():
-    print("Running program")
-    os.system("echo 'Hello from the other side!' > /tmp/hello")
-    for pinNumber in pinNumbers:
-        GPIO.output(pinNumber, 1)
-        sleep(.5)
+    post = {'fold': 'green'}
+    x = requests.post(url, data = post)
 
 try:
     while True:
         if GPIO.input(17) == GPIO.LOW:
-            print("%s pressed, folding now..." % (hotkey))
             runProgram()
             sleep(1)
         sleep(.1)
