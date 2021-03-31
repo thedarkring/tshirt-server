@@ -7,11 +7,17 @@ GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BCM) # Use physical pin numbering
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 hotkey="Button"
-
+ 
+pinNumbers=[2,3,4,27,22]
+for pinNumber in pinNumbers:
+    GPIO.setup(pinNumber, GPIO.OUT)
+    
 def runProgram():
     print("Running program")
-    os.system("echo 'Hello from the other side! We are working nowss!' > /tmp/hello")
-
+    os.system("echo 'Hello from the other side!' > /tmp/hello")
+    for pinNumber in pinNumbers:
+        GPIO.output(pinNumber, 1)
+        sleep(.5)
 
 try:
     while True:
@@ -22,3 +28,15 @@ try:
         sleep(.1)
 except KeyboardInterrupt:
     GPIO.cleanup()
+
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
