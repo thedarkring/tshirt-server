@@ -31,6 +31,10 @@ def runProgram():
     for pinNumber in pinNumbers:
         GPIO.output(pinNumber, 1)
         sleep(.5)
+    sleep(.5)
+    for pinNumber in pinNumbers:
+        GPIO.output(pinNumber, 0)
+        sleep(.5)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
