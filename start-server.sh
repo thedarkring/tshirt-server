@@ -6,6 +6,7 @@ find .git/objects/ -size 0 -delete
 git reset --hard HEAD
 git pull
 . /home/pi/tshirt/bin/activate
+pip install -r requirements.txt
 cp /home/pi/tshirt/tshirt-server/start-server.sh /home/pi/start-server.sh
 chmod +x /home/pi/tshirt/tshirt-server/listen_button.py
 nohup python3 /home/pi/tshirt/tshirt-server/listen_button.py &
