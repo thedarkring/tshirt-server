@@ -3,13 +3,15 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from time import sleep
-import sys
-import fake_rpi
+
+
 
 
 try:
     import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 except:
+    import fake_rpi
+    import sys
     sys.modules['RPi'] = fake_rpi.RPi     # Fake RPi
     sys.modules['RPi.GPIO'] = fake_rpi.RPi.GPIO # Fake GPIO
     sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
