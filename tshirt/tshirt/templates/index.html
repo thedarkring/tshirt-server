@@ -7,7 +7,7 @@
  
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
      <title>Hello, world!</title>
      <style>
          html,body {
@@ -26,14 +26,29 @@
   height:50%;
   width:100%;
 }
+
      </style>
+
+     
    </head>
    <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+      <!-- Links -->
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i style="font-size: 2em;" class="fa fa-cog"></i></a>
+        </li>
+      </ul>
+    
+    </nav>
      <div class="contents">
-        <div class="col-md-6 quarter"><center><button type="button" class="btn btn-lg btn-success">One</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" class="btn btn-lg btn-success">Two</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" class="btn btn-lg btn-success">Three</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" class="btn btn-lg btn-success">Four</button></center></div>
+        <div style="padding-top: 50px;"></div>
+        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 200px;" class="btn btn-lg btn-success"><i style="font-size: 5em;" class="fas fa-tshirt"></i><br \>Large</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 200px;"  class="btn btn-lg btn-secondary"><i style="font-size: 3em;" class="fas fa-tshirt"></i><br \>Small</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 200px;"  class="btn btn-lg btn-secondary"><i style="font-size: 4.5em;" class="fas fa-tshirt"></i><br \>Medium</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 200px;"  class="btn btn-lg btn-secondary"><i style="font-size: 5.5em;" class="fas fa-tshirt"></i><br \>X-Large</button></center></div>
+       
         </div>
      <!-- Optional JavaScript -->
      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
