@@ -18,7 +18,7 @@ GPIO.setmode(GPIO.BCM) # Use physical pin numbering
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 
 import requests
-url='http://127.0.0.1:8000'
+url='http://127.0.0.1:8080'
 
 def runProgram():
     post = {'fold': 'green'}
