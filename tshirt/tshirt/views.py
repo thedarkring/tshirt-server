@@ -23,6 +23,11 @@ GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 hotkey="Button"
  
 pinNumbers=[2,3,4,27,22]
+R1=2
+R2=3
+R3=4
+R4=27
+R5=22
 for pinNumber in pinNumbers:
     GPIO.setup(pinNumber, GPIO.OUT)
     
@@ -55,12 +60,88 @@ class DashboardView(View):
         text_file.close()
         print(action)
         if action == "youth":
-            pinNumbers=[2,3]
+            GPIO.output(R1, 0)
+            sleep(.2)
+            GPIO.output(R3, 1)
+            sleep(.4)
+            GPIO.output(R3, 0)
+            sleep(.4)
+            GPIO.output(R4, 1)
+            sleep(.4)
+            GPIO.output(R4, 0)
+            sleep(.4)
+            GPIO.output(R5, 1)
+            sleep(.4)
+            GPIO.output(R5, 0)
+            sleep(.4)
+            GPIO.output(R1, 1)
+
         elif action == "fast":
-            pinNumbers=[4]
+            GPIO.output(R1, 0)
+            sleep(.2)
+            GPIO.output(R2, 1)
+            sleep(.4)
+            GPIO.output(R2, 0)
+            sleep(.4)
+            GPIO.output(R3, 1)
+            sleep(.4)
+            GPIO.output(R3, 0)
+            sleep(.4)
+            GPIO.output(R4, 1)
+            sleep(.4)
+            GPIO.output(R4, 0)
+            sleep(.4)
+            GPIO.output(R5, 1)
+            sleep(.4)
+            GPIO.output(R5, 0)
+            sleep(.4)
+            GPIO.output(R1, 1)
+
         elif action == "bulk":
-            pinNumbers=[2,3,4,27,22]
+            GPIO.output(R1, 0)
+            sleep(.2)
+            GPIO.output(R2, 1)
+            sleep(.8)
+            GPIO.output(R2, 0)
+            sleep(.8)
+            GPIO.output(R3, 1)
+            sleep(.8)
+            GPIO.output(R3, 0)
+            sleep(.8)
+            GPIO.output(R4, 1)
+            sleep(.8)
+            GPIO.output(R4, 0)
+            sleep(.8)
+            GPIO.output(R5, 1)
+            sleep(.8)
+            GPIO.output(R5, 0)
+            sleep(.8)
+            GPIO.output(R1, 1)
+
+
         elif action == "long":
-            pinNumbers=[2,3,4]
-        runProgram(pinNumbers)
+            GPIO.output(R1, 0)
+            sleep(.2)
+            GPIO.output(R2, 1)
+            sleep(.4)
+            GPIO.output(R2, 0)
+            sleep(.4)
+            GPIO.output(R3, 1)
+            sleep(.4)
+            GPIO.output(R3, 0)
+            sleep(.4)
+            GPIO.output(R4, 1)
+            sleep(.4)
+            GPIO.output(R4, 0)
+            sleep(.4)
+            GPIO.output(R3, 1)
+            sleep(.4)
+            GPIO.output(R3, 0)
+            sleep(.4)
+            GPIO.output(R5, 1)
+            sleep(.4)
+            GPIO.output(R5, 0)
+            sleep(.4)
+            GPIO.output(R1, 1)
+
         return render(request, 'index.html', context)
