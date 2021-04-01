@@ -47,10 +47,10 @@ body {
     </nav>
      <div class="contents">
         <div style="padding-top: 25px;"></div>
-        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 125px;" class="btn btn-lg btn-success"><i style="font-size: 4em;" class="fas fa-tshirt"></i><br \>Large</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 2.5em;" class="fas fa-tshirt"></i><br \>Small</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 3.5em;" class="fas fa-tshirt"></i><br \>Medium</button></center></div>
-        <div class="col-md-6 quarter"><center><button type="button" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 4.5em;" class="fas fa-tshirt"></i><br \>X-Large</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" id="fast" style="width: 200px; height: 125px;" class="btn btn-lg btn-success"><i style="font-size: 4em;" class="fas fa-bolt"></i><br \>FAST FOLD</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" id="youth" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 3em;" class="fas fa-tshirt"></i><br \>SMALL/YOUTH</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" id="long" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 4em;" class="fas fa-tshirt"></i><br \>LONG SLEEVE</button></center></div>
+        <div class="col-md-6 quarter"><center><button type="button" id="bulk" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 4em;" class="fas fa-dolly"></i><br \>BULK 8S</button></center></div>
        
         </div>
      <!-- Optional JavaScript -->
@@ -66,7 +66,9 @@ body {
         $(this).addClass("btn-success");
        $.ajax({
       type: "POST",
-      data: {},
+      data: {
+        "action": $(this).attr('id')
+      },
       success: function() {
         console.log('success')
       },

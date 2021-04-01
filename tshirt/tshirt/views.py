@@ -22,11 +22,11 @@ GPIO.setmode(GPIO.BCM) # Use physical pin numbering
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 hotkey="Button"
  
-pinNumbers=[2,3,4,27,22]
+
 for pinNumber in pinNumbers:
     GPIO.setup(pinNumber, GPIO.OUT)
     
-def runProgram():
+def runProgram(pinNumbers):
     print("Running program")
     for pinNumber in pinNumbers:
         GPIO.output(pinNumber, 1)
@@ -48,5 +48,19 @@ class DashboardView(View):
 
     def post(self, request):
         context = dict()
-        runProgram()
+        
+        action = request.POST.get("action")
+        text_file = open("/tmp/action", "w")
+        n = text_file.write(action)
+        text_file.close()
+        print(action)
+        if action == "youth":
+            pinNumbers=[2,3]
+        elif action == "fast":
+            pinNumbers=[4]
+        elif action == "bulk":
+            pinNumbers=[2,3,4,27,22]
+        elif action == "long":
+            pinNumbers=[2,3,4]
+        runProgram(pinNumbers)
         return render(request, 'index.html', context)

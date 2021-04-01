@@ -21,7 +21,18 @@ import requests
 url='http://127.0.0.1:8080'
 
 def runProgram():
-    post = {'fold': 'green'}
+    try:
+        with open('/tmp/action', 'r') as file:
+            data = file.read().replace('\n', '')
+    except:
+        data = None
+
+    if data == None:
+        action = 'fast'
+    else:
+        action = str(data)
+
+    post = {'action': action}
     x = requests.post(url, data = post)
 
 try:
