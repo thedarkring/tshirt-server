@@ -156,5 +156,5 @@ class DashboardView(View):
                 GPIO.output(R5, 0)
                 sleep(.4)
                 GPIO.output(R1, 1)
-
+            os.environ["FOLDING"] = "False"
         return JsonResponse(context)
