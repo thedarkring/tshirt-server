@@ -112,6 +112,38 @@ body {
       });
 
       })
+
+      function make_payload() {
+        $.ajax({
+          type: "POST",
+          data: {
+            "action": "heartbeat"
+          },
+          beforeSend: function() {
+            console.log("Folding")
+          },
+          success: function(data) {
+            console.log("Success");
+            if (data.folding == true) {
+              $('#foldModal').modal({
+                show: true,
+                keyboard: false,
+                backdrop: 'static'
+            });
+            } else {
+              $('#foldModal').modal('hide');
+            };
+            return data
+          },
+          error: function (data) {
+            console.log("Error");
+            $('#foldModal').modal('hide');
+            return data;
+          },
+          dataType: "json"
+      });
+      };
+
     </script>
     </body>
  </html>
