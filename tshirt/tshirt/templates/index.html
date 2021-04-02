@@ -82,7 +82,11 @@ body {
 
      <script>
       $("button").on("click", function() {
-        $('#foldModal').modal('show');
+        $('#foldModal').modal({
+            show: true,
+            keyboard: false,
+            backdrop: 'static'
+        });
         $('button').removeClass("btn-success");
         $('button').addClass("btn-secondary");
         $(this).addClass("btn-success");
