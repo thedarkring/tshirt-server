@@ -29,6 +29,13 @@
 body {
   overflow: hidden; /* Hide scrollbars */
 }
+.modal-open .modal {
+    display: flex!important;
+    align-items: center!important;
+    .modal-dialog {
+        flex-grow: 1;
+    }
+}
      </style>
 
      
@@ -52,7 +59,7 @@ body {
             <div class="modal-body">
               <center>
                 <i style="font-size: 8em;" class="fas fa-circle-notch fa-spin"></i><br \>
-                <p id="fold-message"></p>
+                <p style="font-size: 2em;" id="fold-message"></p>
 
               </center>
 
@@ -80,14 +87,24 @@ body {
         $('button').addClass("btn-secondary");
         $(this).addClass("btn-success");
        $.ajax({
-      type: "POST",
-      data: {
-        "action": $(this).attr('id')
-      },
-      success: function() {
-        console.log('success')
-      },
-      dataType: "json"
+          type: "POST",
+          data: {
+            "action": $(this).attr('id')
+          },
+          beforeSend: function() {
+            console.log("Folding")
+          },
+          success: function(data) {
+            console.log("Success");
+            $('#foldModal').modal('hide');
+            return data
+          },
+          error: function (data) {
+            console.log("Error");
+            $('#foldModal').modal('hide');
+            return data;
+          },
+          dataType: "json"
       });
 
       })
