@@ -6,9 +6,9 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  
      <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-     <title>Hello, world!</title>
+     <link rel="stylesheet" href="/static/bootstrap.min.css">
+     <link rel="stylesheet" href="/static/css/all.min.css" />
+     <title>T-Shirt Folder</title>
      <style>
          html,body {
   padding:0;
@@ -46,6 +46,20 @@ body {
     
     </nav>
      <div class="contents">
+      <div class="modal" id="foldModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <center>
+                <i style="font-size: 8em;" class="fas fa-circle-notch fa-spin"></i><br \>
+                <p id="fold-message"></p>
+
+              </center>
+
+            </div>
+          </div>
+        </div>
+      </div>
         <div style="padding-top: 25px;"></div>
         <div class="col-md-6 quarter"><center><button type="button" id="fast" style="width: 200px; height: 125px;" class="btn btn-lg btn-success"><i style="font-size: 4em;" class="fas fa-bolt"></i><br \>FAST FOLD</button></center></div>
         <div class="col-md-6 quarter"><center><button type="button" id="youth" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 3em;" class="fas fa-tshirt"></i><br \>SMALL/YOUTH</button></center></div>
@@ -55,12 +69,13 @@ body {
         </div>
      <!-- Optional JavaScript -->
      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="/static/jquery.min.js"></script>
+     <script src="/static/popper.min.js"></script>
+     <script src="/static/bootstrap.min.js"></script>
 
      <script>
       $("button").on("click", function() {
+        $('#foldModal').modal('show');
         $('button').removeClass("btn-success");
         $('button').addClass("btn-secondary");
         $(this).addClass("btn-success");
