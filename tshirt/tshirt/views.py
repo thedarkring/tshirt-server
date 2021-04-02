@@ -52,17 +52,17 @@ class DashboardView(View):
         return render(request, 'index.html', context)
 
     def post(self, request):
+        folding = os.environ["FOLDING"]
+        if folding == "True":
+            folding = True
+        else:
+            folding = False
         context = dict()
         
         action = request.POST.get("action")
         if (action) == 'heartbeat':
-            folding = os.environ["FOLDING"]
-            if folding == "True":
-                folding = True
-            else:
-                folding = False
             context["folding"] = folding
-        else:
+        elif folding == False:
             os.environ["FOLDING"] = "True"
             text_file = open("/tmp/action", "w")
             n = text_file.write(action)
