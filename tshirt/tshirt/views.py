@@ -48,9 +48,11 @@ def runProgram(pinNumbers):
         GPIO.output(pinNumber, 0)
         sleep(.5)
 
-
-with open('fold-counts.json', 'rb') as fp:
-    fold_counts = pickle.load(fp)
+try:
+    with open('fold-counts.json', 'rb') as fp:
+        fold_counts = pickle.load(fp)
+except:
+     fold_counts = { 'fast-count': 0, 'youth-count': 0, 'long-count': 0, 'bulk-count': 0}
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
@@ -174,6 +176,6 @@ class DashboardView(View):
                 GPIO.output(R1, 1)
             os.environ["FOLDING"] = "False"
             with open('fold-counts.json', 'wb') as fp:
-                pickle.dump(my_dict, fp)
+                pickle.dump(fold_counts, fp)
         context["fold-counts"] = fold_counts
         return JsonResponse(context)
