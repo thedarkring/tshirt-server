@@ -5,8 +5,15 @@ from django.utils.decorators import method_decorator
 from time import sleep
 from django.http import JsonResponse
 import os
-os.environ["FOLDING"] = "False"
+import pickle
 
+# my_dict = { 'fast-count': 0, 'youth-count': 0, 'long-count': 0, 'bulk-count': 0}
+
+
+
+os.environ["FOLDING"] = "False"
+# with open('fold-counts.json', 'wb') as fp:
+#     pickle.dump(my_dict, fp)
 try:
     import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 except:
@@ -41,6 +48,10 @@ def runProgram(pinNumbers):
         GPIO.output(pinNumber, 0)
         sleep(.5)
 
+
+with open('fold-counts.json', 'rb') as fp:
+    fold_counts = pickle.load(fp)
+
 @method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
 
@@ -52,6 +63,7 @@ class DashboardView(View):
         return render(request, 'index.html', context)
 
     def post(self, request):
+
         folding = os.environ["FOLDING"]
         if folding == "True":
             folding = True
@@ -69,6 +81,7 @@ class DashboardView(View):
             text_file.close()
             print(action)
             if action == "youth":
+                fold_counts["youth-count"] = fold_counts["youth-count"] + 1
                 GPIO.output(R1, 0)
                 sleep(.2)
                 GPIO.output(R3, 1)
@@ -86,6 +99,7 @@ class DashboardView(View):
                 GPIO.output(R1, 1)
 
             elif action == "fast":
+                fold_counts["fast-count"] = fold_counts["fast-count"] + 1
                 GPIO.output(R1, 0)
                 sleep(.2)
                 GPIO.output(R2, 1)
@@ -107,6 +121,7 @@ class DashboardView(View):
                 GPIO.output(R1, 1)
 
             elif action == "bulk":
+                fold_counts["bulk-count"] = fold_counts["bulk-count"] + 1
                 GPIO.output(R1, 0)
                 sleep(.2)
                 GPIO.output(R2, 1)
@@ -133,6 +148,7 @@ class DashboardView(View):
 
 
             elif action == "long":
+                fold_counts["long-count"] = fold_counts["long-count"] + 1
                 GPIO.output(R1, 0)
                 sleep(.2)
                 GPIO.output(R2, 1)
@@ -157,4 +173,7 @@ class DashboardView(View):
                 sleep(.4)
                 GPIO.output(R1, 1)
             os.environ["FOLDING"] = "False"
+            with open('fold-counts.json', 'wb') as fp:
+                pickle.dump(my_dict, fp)
+        context["fold-counts"] = fold_counts
         return JsonResponse(context)

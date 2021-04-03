@@ -47,16 +47,16 @@ body {
       <!-- Links -->
       <ul class="nav navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i style="font-size: 1.75em;" class="fas fa-bolt"></i> <span style="font-size: 1.7em; color: white;">5</span></a>
+          <a class="nav-link" id="fast-count" href="#"><i style="font-size: 1.75em;" class="fas fa-bolt"></i> <span style="font-size: 1.7em; color: white;" id="fast-count-n">0</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i style="font-size: 1.25em;" class="fas fa-tshirt"></i> <span style="font-size: 1.7em; color: white;">10</span></a>
+          <a class="nav-link" id="youth-count" href="#"><i style="font-size: 1.25em;" class="fas fa-tshirt"></i> <span style="font-size: 1.7em; color: white;" id="youth-count-n">0</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i style="font-size: 1.75em;" class="fas fa-tshirt"></i> <span style="font-size: 1.7em; color: white;">15</span></a>
+          <a class="nav-link" id="long-count" href="#"><i style="font-size: 1.75em;" class="fas fa-tshirt"></i> <span style="font-size: 1.7em; color: white;" id="long-count-n">0</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i style="font-size: 1.75em;" class="fas fa-dolly"></i> <span style="font-size: 1.7em; color: white;">23</span></a>
+          <a class="nav-link" id="bulk-count" href="#"><i style="font-size: 1.75em;" class="fas fa-dolly"></i> <span style="font-size: 1.7em; color: white;" id="bulk-count-n">0</span></a>
         </li>
       </ul>
       <ul class="nav navbar-nav ml-auto">
@@ -147,6 +147,11 @@ body {
             } else {
               $('#foldModal').modal('hide');
             };
+            fold_counts = data["fold-counts"]
+            $.each(fold_counts, function (a,b) {
+              $(`#${a}-n`).html(b);
+            })
+
             return data
           },
           error: function (data) {
