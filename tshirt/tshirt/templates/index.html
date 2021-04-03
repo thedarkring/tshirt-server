@@ -61,7 +61,7 @@ body {
       </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i style="font-size: 1.75em;" class="fa fa-cog"></i></a>
+          <a class="nav-link" href="#" id="settings"><i style="font-size: 1.75em;" class="fa fa-trash"></i></a>
         </li>
       </ul>
     
@@ -81,6 +81,7 @@ body {
           </div>
         </div>
       </div>
+      
         <div style="padding-top: 25px;"></div>
         <div class="col-md-6 quarter"><center><button type="button" id="fast" style="width: 200px; height: 125px;" class="btn btn-lg btn-success"><i style="font-size: 4em;" class="fas fa-bolt"></i><br \>FAST FOLD</button></center></div>
         <div class="col-md-6 quarter"><center><button type="button" id="youth" style="width: 200px; height: 125px;"  class="btn btn-lg btn-secondary"><i style="font-size: 3em;" class="fas fa-tshirt"></i><br \>SMALL/YOUTH</button></center></div>
@@ -95,6 +96,15 @@ body {
      <script src="/static/bootstrap.min.js"></script>
 
      <script>
+       $("#settings").on("click", function() {
+        $.ajax({
+          type: "POST",
+          data: {
+            "action": "reset"
+          },
+          dataType: "json"
+      });
+       });
       $("button").on("click", function() {
         $('#foldModal').modal({
             show: true,

@@ -6,8 +6,8 @@ from time import sleep
 from django.http import JsonResponse
 import os
 import pickle
-
-# my_dict = { 'fast-count': 0, 'youth-count': 0, 'long-count': 0, 'bulk-count': 0}
+import json
+# fold_counts = { 'fast-count': 0, 'youth-count': 0, 'long-count': 0, 'bulk-count': 0}
 
 
 
@@ -74,14 +74,22 @@ class DashboardView(View):
         context = dict()
         
         action = request.POST.get("action")
+        if (action) == 'reset':
+            fold_counts["youth-count"] = 0
+            fold_counts["fast-count"] = 0
+            fold_counts["bulk-count"] = 0
+            fold_counts["long-count"] = 0
         if (action) == 'heartbeat':
             context["folding"] = folding
+
         elif folding == False:
             os.environ["FOLDING"] = "True"
             text_file = open("/tmp/action", "w")
             n = text_file.write(action)
             text_file.close()
             print(action)
+            # if action == "reset":
+
             if action == "youth":
                 fold_counts["youth-count"] = fold_counts["youth-count"] + 1
                 GPIO.output(R1, 0)
