@@ -10,4 +10,4 @@ git pull
 cp /home/pi/tshirt/tshirt-server/start-server.sh /home/pi/start-server.sh
 chmod +x /home/pi/tshirt/tshirt-server/listen_button.py
 nohup python3 /home/pi/tshirt/tshirt-server/listen_button.py &
-python /home/pi/tshirt/tshirt-server/tshirt/manage.py runserver 0.0.0.0:8080
+python3 /home/pi/tshirt/tshirt-server/tshirt/manage.py runserver 0.0.0.0:8080
