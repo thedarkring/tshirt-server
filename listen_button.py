@@ -15,7 +15,7 @@ except:
 
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BCM) # Use physical pin numbering
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 
 import requests
 url='http://127.0.0.1:8080'
@@ -37,7 +37,7 @@ def runProgram():
 
 try:
     while True:
-        if GPIO.input(27) == GPIO.LOW:
+        if GPIO.input(7) == GPIO.LOW:
             runProgram()
             sleep(1)
         sleep(.1)
