@@ -37,7 +37,7 @@ def runProgram():
 
 try:
     while True:
-        if GPIO.input(17) == GPIO.LOW:
+        if GPIO.input(27) == GPIO.LOW:
             runProgram()
             sleep(1)
         sleep(.1)
