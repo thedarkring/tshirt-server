@@ -29,10 +29,10 @@ GPIO.setmode(GPIO.BCM) # Use physical pin numbering
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
 hotkey="Button"
  
-pinNumbers=[4,5,6,17,22]
+pinNumbers=[4,5,19,17,22]
 R1=4
 R2=5
-R3=6
+R3=19
 R4=17
 R5=22
 for pinNumber in pinNumbers:
