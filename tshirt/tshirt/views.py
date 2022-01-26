@@ -23,17 +23,21 @@ except:
     sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
     import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 
-GPIO.setwarnings(False) # Ignore warning for now
-GPIO.setmode(GPIO.BCM) # Use physical pin numbering
-GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-hotkey="Button"
+
  
-pinNumbers=[4,5,6,17,22]
+BUTTON=7
 R1=4
 R2=5
 R3=6
 R4=17
 R5=22
+
+GPIO.setwarnings(False) # Ignore warning for now
+GPIO.setmode(GPIO.BCM) # Use physical pin numbering
+GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
+hotkey="Button"
+
+pinNumbers=[R1,R2,R3,R4,R5]
 for pinNumber in pinNumbers:
     GPIO.setup(pinNumber, GPIO.OUT)
     
