@@ -1,3 +1,16 @@
+#######################################################
+################# PIN CONFIGURATION ###################
+#######################################################
+BUTTON=7
+R1=4
+R2=5
+R3=6
+R4=17
+R5=22
+#######################################################
+######### ## DO NOT EDIT BELOW THIS LINE ##############
+#######################################################
+
 from django.views import View
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -22,15 +35,6 @@ except:
     sys.modules['RPi.GPIO'] = fake_rpi.RPi.GPIO # Fake GPIO
     sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
     import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
-
-
- 
-BUTTON=7
-R1=4
-R2=5
-R3=6
-R4=17
-R5=22
 
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BCM) # Use physical pin numbering
